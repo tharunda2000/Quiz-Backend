@@ -1,10 +1,7 @@
 package com.quizWeb.demo.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,11 +10,12 @@ import java.util.List;
 @Setter
 @ToString
 
+
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private int userId;
 
     private String name;
     private String email;
@@ -26,4 +24,7 @@ public class User {
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Attempt> attempts;
 
+    public User() {
+
+    }
 }

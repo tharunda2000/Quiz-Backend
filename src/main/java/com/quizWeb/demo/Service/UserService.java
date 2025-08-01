@@ -2,6 +2,7 @@ package com.quizWeb.demo.Service;
 
 import com.quizWeb.demo.Model.User;
 import com.quizWeb.demo.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
 
+    @Autowired
     UserRepository userRepo;
 
     public List<User> getallUsers() {

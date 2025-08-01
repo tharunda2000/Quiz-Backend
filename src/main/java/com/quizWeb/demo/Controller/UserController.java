@@ -13,6 +13,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping("/users")
     public List<User> getAllUsers(){
         return userService.getallUsers();
@@ -23,20 +24,23 @@ public class UserController {
         return userService.getUserById( id);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/user")
     public User addUser(@RequestBody User user){
         userService.addUser(user);
         return user;
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable int id){
         userService.deleteUser(id);
     }
 
-    @PutMapping("/user")
-    public User edituser(@RequestBody User user){
-        userService.editUser(user);
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PutMapping("/user/{id}")
+    public User edituser(@RequestBody User user,@PathVariable int id){
+        userService.editUser(user,id);
         return user;
     }
 
