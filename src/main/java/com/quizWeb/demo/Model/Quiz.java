@@ -1,13 +1,12 @@
 package com.quizWeb.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -22,6 +21,12 @@ public class Quiz {
     private String quizName;
     private int duration;
     private String accessKey;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
+
 
     @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
     private List<Attempt> attempts;

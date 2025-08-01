@@ -5,7 +5,7 @@ import com.quizWeb.demo.Service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.classfile.constantpool.LongEntry;
+
 import java.util.List;
 
 @RestController
@@ -14,20 +14,20 @@ public class QuizController {
     @Autowired
     QuizService quizService;
 
-    @GetMapping("/allQuizes")
-    public List<Quiz> getAllQuizes(){
-        return quizService.getAllQuizes();
+    @GetMapping("/allQuiz")
+    public List<Quiz> getAllQuiz(){
+        return quizService.getAllQuiz();
     }
 
     @PostMapping("/quiz")
-    public Quiz setQuiz(@RequestBody Quiz quiz){
-        quizService.setQuiz(quiz);
+    public Quiz setQuiz(@RequestBody Quiz quiz,@RequestParam int userId){
+        quizService.setQuiz(quiz,userId);
         return quiz;
     }
 
     @GetMapping("/quiz/{id}")
-    public Quiz getQuize(@PathVariable Long id){
-        return quizService.getQuize();
+    public Quiz getQuiz(@PathVariable Long id){
+        return quizService.getQuiz(id);
 
     }
 
@@ -37,8 +37,8 @@ public class QuizController {
     }
 
     @PutMapping("/quiz/{id}")
-    public void editQuiz(@PathVariable Long id){
-        quizService.editQuiz(id);
+    public void editQuiz(@PathVariable Long id,@RequestBody Quiz quiz){
+        quizService.editQuiz(id,quiz);
     }
 
 

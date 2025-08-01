@@ -2,6 +2,10 @@ package com.quizWeb.demo.Service;
 
 
 import com.quizWeb.demo.Model.Quiz;
+import com.quizWeb.demo.Model.User;
+import com.quizWeb.demo.Repository.QuizRepository;
+import com.quizWeb.demo.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,19 +13,44 @@ import java.util.List;
 @Service
 public class QuizService {
 
+    @Autowired
+    QuizRepository QuizRepo;
 
-    public List<Quiz> getAllQuizes() {
+    @Autowired
+    UserRepository userRepo;
+
+
+    public List<Quiz> getAllQuiz() {
+        return QuizRepo.findAll();
     }
 
-    public void setQuiz(Quiz quiz) {
+    public void setQuiz(Quiz quiz, int userId) {
+
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        quiz.setUser(user);
+        QuizRepo.save(quiz);
     }
 
-    public Quiz getQuize() {
+    public Quiz getQuiz(Long id) {
+        return QuizRepo.findById(id).get();
+
     }
 
     public void deleteQuiz(Long id) {
+        QuizRepo.deleteById(id);
     }
 
-    public void editQuiz(Long id) {
+    public void editQuiz(Long id, Quiz quiz) {
+        Quiz currentQuiz = QuizRepo.findById(id)
+                .orElseThrow(()->new RuntimeException("Quiz does not found"));
+
+        currentQuiz.setQuizName(quiz.getQuizName());
+        currentQuiz.setDuration(quiz.getDuration());
+        currentQuiz.setQuestions(quiz.getQuestions());
+        currentQuiz.setAccessKey(quiz.getAccessKey());
+
+        QuizRepo.save(currentQuiz);
+
     }
 }
