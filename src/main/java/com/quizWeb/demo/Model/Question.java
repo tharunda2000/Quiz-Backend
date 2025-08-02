@@ -19,7 +19,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
-    private String question;
+    private String questionText;
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
