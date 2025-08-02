@@ -1,6 +1,7 @@
 package com.quizWeb.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,9 +30,11 @@ public class Quiz {
 
 
     @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Attempt> attempts;
 
     @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Question> questions;
 
 }

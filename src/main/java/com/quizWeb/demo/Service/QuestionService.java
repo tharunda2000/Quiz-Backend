@@ -30,12 +30,12 @@ public class QuestionService {
 
     public Question getQuestion(Long questionId) {
         return questionRepo.findById(questionId)
-                .orElseThrow(() -> new RuntimeException("Question not found with id: " + questionId));
+                .orElseThrow(() -> new RuntimeException("Question not found with id.cant get: " + questionId));
     }
 
     public void editQuestion(Question question, Long id) {
         Question currentQuestion = questionRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Question not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Question not found with id.cant edit: " + id));
 
         currentQuestion.setQuestionText(question.getQuestionText());
 
@@ -44,7 +44,7 @@ public class QuestionService {
 
     public Question deleteQuestion(Long id) {
         Question question = questionRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Question not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Question not found with id.cant delete: " + id));
         questionRepo.deleteById(id);
         return question;
     }

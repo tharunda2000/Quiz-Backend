@@ -1,6 +1,5 @@
 package com.quizWeb.demo.Service;
-
-import com.quizWeb.demo.Model.Option;
+import com.quizWeb.demo.Model.OptionModel;
 import com.quizWeb.demo.Model.Question;
 import com.quizWeb.demo.Repository.OptionRepository;
 import com.quizWeb.demo.Repository.QuestionRepository;
@@ -17,7 +16,7 @@ public class OptionService {
     @Autowired
     QuestionRepository questionRepo;
 
-    public void setOption(Option option, Long questionId) {
+    public void setOption(OptionModel option, Long questionId) {
 
         Question question= questionRepo.findById(questionId)
                 .orElseThrow(() -> new RuntimeException("Question not found"));
@@ -26,23 +25,23 @@ public class OptionService {
 
     }
 
-    public List<Option> getAllOptions() {
+    public List<OptionModel> getAllOptions() {
         return optionRepo.findAll();
     }
 
-    public Option getOption(Long id) {
+    public OptionModel getOption(Long id) {
         return optionRepo.findById(id).get();
     }
 
-    public Option editOption(Long id, Option option) {
-        Option currentOption = optionRepo.findById(id).get();
-        currentOption.setOption(option.getOption());
+    public OptionModel editOption(Long id, OptionModel option) {
+        OptionModel currentOption = optionRepo.findById(id).get();
+        currentOption.setOptionText(option.getOptionText());
         currentOption.setIsCorrect(option.getIsCorrect());
         return optionRepo.save(currentOption);
     }
 
-    public Option deleteOption(Long id) {
-        Option option = optionRepo.findById(id).get();
+    public OptionModel deleteOption(Long id) {
+        OptionModel option = optionRepo.findById(id).get();
         optionRepo.deleteById(id);
         return option;
     }

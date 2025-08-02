@@ -1,6 +1,7 @@
 package com.quizWeb.demo.Controller;
 
-import com.quizWeb.demo.Model.Option;
+
+import com.quizWeb.demo.Model.OptionModel;
 import com.quizWeb.demo.Service.OptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +14,27 @@ public class OptionController {
     OptionService optionService;
 
     @PostMapping("/option")
-    public void setOption(@RequestBody Option option,@RequestParam Long questionId){
+    public void setOption(@RequestBody OptionModel option, @RequestParam Long questionId){
         optionService.setOption(option,questionId);
     }
 
     @GetMapping("/options")
-    public List<Option> getAllOptions(){
+    public List<OptionModel> getAllOptions(){
         return optionService.getAllOptions();
     }
 
     @GetMapping("/option/{id}")
-    public Option getOption(@PathVariable Long id){
+    public OptionModel getOption(@PathVariable Long id){
         return optionService.getOption(id);
     }
 
     @PutMapping("/option/{id}")
-    public Option editOption(@PathVariable Long id,@RequestBody Option option){
+    public OptionModel editOption(@PathVariable Long id,@RequestBody OptionModel option){
         return optionService.editOption(id,option);
     }
 
     @DeleteMapping("/option/{id}")
-    public Option deleteOption(Long id){
+    public OptionModel deleteOption(Long id){
         return optionService.deleteOption(id);
 
     }

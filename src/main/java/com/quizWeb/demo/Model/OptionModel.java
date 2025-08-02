@@ -1,29 +1,29 @@
 package com.quizWeb.demo.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 
 @Entity
-public class Option {
+public class OptionModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long optionId;
 
-    private String option;
+    private String optionText;
     private Boolean isCorrect;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
+    @JsonBackReference
     private Question question;
 
 }

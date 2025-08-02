@@ -13,7 +13,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    @PostMapping("/Question")
+    @PostMapping("/question")
     public Question setQuestion(@RequestBody Question question,@RequestParam Long quizId){
 
         return questionService.setQuestion(question,quizId);
