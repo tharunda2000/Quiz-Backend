@@ -40,17 +40,10 @@ public class AttemptService {
 
     }
 
-    public void submitAttempt(AttemptSubmitDto attemptSubmitDto, int userId, Long quizId) {
-        Attempt attempt = new Attempt();
+    public void submitAttempt(AttemptSubmitDto attemptSubmitDto, Long attemptId) {
+        Attempt attempt = attemptRepo.findById(attemptId)
+                .orElseThrow(()-> new RuntimeException("attempt not found"));
 
-        User user = userRepo.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        Quiz quiz = quizRepo.findById(quizId)
-                .orElseThrow(() -> new RuntimeException("Quiz not found"));
-
-        attempt.setQuiz(quiz);
-        attempt.setUser(user);
         attempt.setEndTime(attemptSubmitDto.getEndTime());
         attempt.setMarks(attemptSubmitDto.getMarks());
 

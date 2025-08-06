@@ -5,10 +5,7 @@ import com.quizWeb.demo.DTO.AttemptSubmitDto;
 import com.quizWeb.demo.Model.Attempt;
 import com.quizWeb.demo.Service.AttemptService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AttemptController {
@@ -21,9 +18,9 @@ public class AttemptController {
         attemptService.createAttempt(attemptStartDTO,userId,quizId);
     }
 
-    @PostMapping("/attemptEnd")
-    public void submitAttempt(@RequestBody AttemptSubmitDto attemptSubmitDto,@RequestParam int userId,@RequestParam Long quizId){
-        attemptService.submitAttempt(attemptSubmitDto,userId,quizId);
+    @PutMapping("/attemptEnd")
+    public void submitAttempt(@RequestBody AttemptSubmitDto attemptSubmitDto,@PathVariable Long attemptId){
+        attemptService.submitAttempt(attemptSubmitDto,attemptId);
     }
 
 
