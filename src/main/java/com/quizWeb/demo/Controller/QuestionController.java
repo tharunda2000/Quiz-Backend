@@ -31,8 +31,8 @@ public class QuestionController {
     }
 
     @PutMapping("/question/{id}")
-    public void editQuestion(@RequestBody Question question,@PathVariable Long id){
-        questionService.editQuestion(question,id);
+    public void editQuestion(@RequestBody QuestionDTO questionDTO,@PathVariable Long id){
+        questionService.editQuestion(questionDTO,id);
     }
 
     @DeleteMapping("/question/{id}")

@@ -37,11 +37,11 @@ public class QuestionService {
                 .orElseThrow(() -> new RuntimeException("Question not found with id.cant get: " + questionId));
     }
 
-    public void editQuestion(Question question, Long id) {
+    public void editQuestion(QuestionDTO questionDTO, Long id) {
         Question currentQuestion = questionRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Question not found with id.cant edit: " + id));
 
-        currentQuestion.setQuestionText(question.getQuestionText());
+        currentQuestion.setQuestionText(questionDTO.getQuestionText());
 
         questionRepo.save(currentQuestion);
     }
