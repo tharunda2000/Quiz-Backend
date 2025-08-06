@@ -1,5 +1,7 @@
 package com.quizWeb.demo.Controller;
 
+import com.quizWeb.demo.DTO.AttemptStartDTO;
+import com.quizWeb.demo.DTO.AttemptSubmitDto;
 import com.quizWeb.demo.Model.Attempt;
 import com.quizWeb.demo.Service.AttemptService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,15 @@ public class AttemptController {
     @Autowired
     AttemptService attemptService;
 
-    @PostMapping("/attempt")
-    public void createAttempt(@RequestBody Attempt attempt, @RequestParam int userId, @RequestParam Long quizId){
-
-        attemptService.createAttempt(attempt,userId,quizId);
-
+    @PostMapping("/attemptStart")
+    public void createAttempt(@RequestBody AttemptStartDTO attemptStartDTO, @RequestParam int userId, @RequestParam Long quizId){
+        attemptService.createAttempt(attemptStartDTO,userId,quizId);
     }
+
+    @PostMapping("/attemptEnd")
+    public void submitAttempt(@RequestBody AttemptSubmitDto attemptSubmitDto,@RequestParam int userId,@RequestParam Long quizId){
+        attemptService.submitAttempt(attemptSubmitDto,userId,quizId);
+    }
+
+
 }

@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 @Data
 public class AttemptStartDTO {
 
-    private int marks;
     private LocalDateTime startTime;
     private int userId;
     private Long quizId;
