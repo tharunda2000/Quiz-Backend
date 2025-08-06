@@ -29,9 +29,7 @@ public class UserController {
     @PostMapping("/user")
     public User addUser(@RequestBody UserDTO user){
         return userService.addUser(user);
-
     }
-
     @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable int id){
@@ -40,10 +38,11 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PutMapping("/user/{id}")
-    public User edituser(@RequestBody User user,@PathVariable int id){
-        userService.editUser(user,id);
-        return user;
+    public UserDTO editUser(@RequestBody UserDTO userDTO,@PathVariable int id){
+        userService.editUser(userDTO,id);
+        return userDTO;
     }
+
 
 
 }

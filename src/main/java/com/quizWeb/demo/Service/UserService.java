@@ -35,13 +35,13 @@ public class UserService {
         userRepo.deleteById(id);
     }
 
-    public void editUser(User user, int id) {
+    public void editUser(UserDTO userDTO, int id) {
         User existingUser = userRepo.findById(id)
                 .orElseThrow(()->new RuntimeException("User does not found"));
 
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setPassword(user.getPassword());
+        existingUser.setName(userDTO.getName());
+        existingUser.setEmail(userDTO.getEmail());
+        existingUser.setPassword(userDTO.getPassword());
 
         userRepo.save(existingUser);
 
