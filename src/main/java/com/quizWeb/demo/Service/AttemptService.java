@@ -60,4 +60,8 @@ public class AttemptService {
     public Attempt getAttempt(Long attemptId) {
         return attemptRepo.findById(attemptId).get();
     }
+
+    public void deleteAttempt(Long attemptId) {
+        attemptRepo.deleteById(attemptId);
+    }
 }

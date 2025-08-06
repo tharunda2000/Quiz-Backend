@@ -35,6 +35,11 @@ public class AttemptController {
         return attemptService.getAttempt(attemptId);
     }
 
+    @DeleteMapping("/attempt/{attemptId}")
+    public void deleteAttempt(@PathVariable Long attemptId){
+        attemptService.deleteAttempt(attemptId);
+    }
+
 
 
 }
