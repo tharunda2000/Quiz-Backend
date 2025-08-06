@@ -44,7 +44,7 @@ public class AttemptService {
 
     public void submitAttempt(AttemptSubmitDto attemptSubmitDto, Long attemptId) {
         Attempt attempt = attemptRepo.findById(attemptId)
-                .orElseThrow(()-> new RuntimeException("attempt not found"));
+                .orElseThrow(() -> new RuntimeException("attempt not found"));
 
         attempt.setEndTime(attemptSubmitDto.getEndTime());
         attempt.setMarks(attemptSubmitDto.getMarks());
@@ -55,5 +55,9 @@ public class AttemptService {
 
     public List<Attempt> getAttempts() {
         return attemptRepo.findAll();
+    }
+
+    public Attempt getAttempt(Long attemptId) {
+        return attemptRepo.findById(attemptId).get();
     }
 }

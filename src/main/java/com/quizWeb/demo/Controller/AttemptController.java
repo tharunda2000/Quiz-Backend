@@ -30,6 +30,11 @@ public class AttemptController {
         return attemptService.getAttempts();
     }
 
+    @GetMapping("/attempt/{attemptId}")
+    public Attempt getAttempt(@PathVariable Long attemptId){
+        return attemptService.getAttempt(attemptId);
+    }
+
 
 
 }
