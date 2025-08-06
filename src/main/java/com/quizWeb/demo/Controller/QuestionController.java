@@ -1,5 +1,6 @@
 package com.quizWeb.demo.Controller;
 
+import com.quizWeb.demo.DTO.QuestionDTO;
 import com.quizWeb.demo.Model.Question;
 import com.quizWeb.demo.Service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,9 @@ public class QuestionController {
     QuestionService questionService;
 
     @PostMapping("/question")
-    public Question setQuestion(@RequestBody Question question,@RequestParam Long quizId){
+    public Question setQuestion(@RequestBody QuestionDTO questionDTO, @RequestParam Long quizId){
 
-        return questionService.setQuestion(question,quizId);
+        return questionService.setQuestion(questionDTO,quizId);
     }
 
     @GetMapping("/questions")

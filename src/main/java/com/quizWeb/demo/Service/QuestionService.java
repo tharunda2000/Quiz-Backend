@@ -1,5 +1,6 @@
 package com.quizWeb.demo.Service;
 
+import com.quizWeb.demo.DTO.QuestionDTO;
 import com.quizWeb.demo.Model.Question;
 import com.quizWeb.demo.Model.Quiz;
 import com.quizWeb.demo.Repository.QuestionRepository;
@@ -17,7 +18,10 @@ public class QuestionService {
     @Autowired
     QuizRepository quizRepo;
 
-    public Question setQuestion(Question question, Long quizId) {
+    public Question setQuestion(QuestionDTO questionDTO, Long quizId) {
+        Question question = new Question();
+
+        question.setQuestionText(questionDTO.getQuestionText());
         Quiz quiz = quizRepo.findById(quizId)
                 .orElseThrow(() -> new RuntimeException("Quiz not found"));
         question.setQuiz(quiz);
