@@ -16,12 +16,12 @@ public class OptionService {
     @Autowired
     QuestionRepository questionRepo;
 
-    public void setOption(OptionModel option, Long questionId) {
+    public OptionModel setOption(OptionModel option, Long questionId) {
 
         Question question= questionRepo.findById(questionId)
                 .orElseThrow(() -> new RuntimeException("Question not found"));
         option.setQuestion(question);
-        optionRepo.save(option);
+        return optionRepo.save(option);
 
     }
 

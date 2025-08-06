@@ -14,8 +14,8 @@ public class OptionController {
     OptionService optionService;
 
     @PostMapping("/option")
-    public void setOption(@RequestBody OptionModel option, @RequestParam Long questionId){
-        optionService.setOption(option,questionId);
+    public OptionModel setOption(@RequestBody OptionModel option, @RequestParam Long questionId){
+        return optionService.setOption(option,questionId);
     }
 
     @GetMapping("/options")
@@ -34,7 +34,7 @@ public class OptionController {
     }
 
     @DeleteMapping("/option/{id}")
-    public OptionModel deleteOption(Long id){
+    public OptionModel deleteOption(@PathVariable Long id){
         return optionService.deleteOption(id);
 
     }

@@ -1,5 +1,6 @@
 package com.quizWeb.demo.Service;
 
+import com.quizWeb.demo.DTO.UserDTO;
 import com.quizWeb.demo.Model.User;
 import com.quizWeb.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,13 @@ public class UserService {
         return userRepo.findById(id).get();
     }
 
-    public void addUser(User user) {
-        userRepo.save(user);
+    public User addUser(UserDTO user) {
+        User newUser = new User();
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(user.getPassword());
+        userRepo.save(newUser);
+        return newUser;
     }
 
     public void deleteUser(int id) {

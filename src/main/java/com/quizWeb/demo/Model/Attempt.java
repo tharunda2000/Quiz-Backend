@@ -32,6 +32,6 @@ public class Attempt {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
-    @JsonBackReference
+    @JsonBackReference // This is the back reference to the Quiz
     private Quiz quiz;
 }

@@ -1,5 +1,6 @@
 package com.quizWeb.demo.Controller;
 
+import com.quizWeb.demo.DTO.UserDTO;
 import com.quizWeb.demo.Model.User;
 import com.quizWeb.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,9 @@ public class UserController {
 
     @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping("/user")
-    public User addUser(@RequestBody User user){
-        userService.addUser(user);
-        return user;
+    public User addUser(@RequestBody UserDTO user){
+        return userService.addUser(user);
+
     }
 
     @CrossOrigin(origins = "http://localhost:5173")

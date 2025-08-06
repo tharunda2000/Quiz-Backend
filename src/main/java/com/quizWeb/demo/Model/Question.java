@@ -23,11 +23,10 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "quiz_id")
-    @JsonBackReference
+    @JsonBackReference // This is the back reference to the Quiz
     private Quiz quiz;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<OptionModel> options;
-
 }

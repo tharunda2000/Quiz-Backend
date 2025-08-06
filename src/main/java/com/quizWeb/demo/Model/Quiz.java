@@ -26,15 +26,16 @@ public class Quiz {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonBackReference
+    @ToString.Exclude
     private User user;
 
-
-    @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @ToString.Exclude
     private List<Attempt> attempts;
 
-    @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @ToString.Exclude
     private List<Question> questions;
-
 }

@@ -25,11 +25,15 @@ public class User {
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonManagedReference
+    @ToString.Exclude
     private List<Attempt> attempts;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonManagedReference
+    @ToString.Exclude
     private List<Quiz> quizList;
 
 
 }
+
+
