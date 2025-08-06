@@ -7,6 +7,8 @@ import com.quizWeb.demo.Service.AttemptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AttemptController {
 
@@ -18,10 +20,16 @@ public class AttemptController {
         attemptService.createAttempt(attemptStartDTO,userId,quizId);
     }
 
-    @PutMapping("/attemptEnd")
+    @PutMapping("/attemptEnd/{attemptId}")
     public void submitAttempt(@RequestBody AttemptSubmitDto attemptSubmitDto,@PathVariable Long attemptId){
         attemptService.submitAttempt(attemptSubmitDto,attemptId);
     }
+
+    @GetMapping("/allAttempts")
+    public List<Attempt> getAttempts(){
+        return attemptService.getAttempts();
+    }
+
 
 
 }
