@@ -38,8 +38,8 @@ public class QuizController {
     }
 
     @PutMapping("/quiz/{id}")
-    public void editQuiz(@PathVariable Long id,@RequestBody Quiz quiz){
-        quizService.editQuiz(id,quiz);
+    public void editQuiz(@PathVariable Long id,@RequestBody QuizDTO quizDTO){
+        quizService.editQuiz(id,quizDTO);
     }
 
 

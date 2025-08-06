@@ -47,14 +47,13 @@ public class QuizService {
         QuizRepo.deleteById(id);
     }
 
-    public void editQuiz(Long id, Quiz quiz) {
+    public void editQuiz(Long id, QuizDTO quizDTO) {
         Quiz currentQuiz = QuizRepo.findById(id)
                 .orElseThrow(()->new RuntimeException("Quiz does not found"));
 
-        currentQuiz.setQuizName(quiz.getQuizName());
-        currentQuiz.setDuration(quiz.getDuration());
-        currentQuiz.setQuestions(quiz.getQuestions());
-        currentQuiz.setAccessKey(quiz.getAccessKey());
+        currentQuiz.setQuizName(quizDTO.getQuizName());
+        currentQuiz.setDuration(quizDTO.getDuration());
+        currentQuiz.setAccessKey(quizDTO.getAccessKey());
 
         QuizRepo.save(currentQuiz);
 
