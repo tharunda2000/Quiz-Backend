@@ -1,5 +1,6 @@
 package com.quizWeb.demo.Controller;
 
+import com.quizWeb.demo.DTO.QuizDTO;
 import com.quizWeb.demo.Model.Quiz;
 import com.quizWeb.demo.Service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,9 @@ public class QuizController {
     }
 
     @PostMapping("/quiz")
-    public Quiz setQuiz(@RequestBody Quiz quiz,@RequestParam int userId){
-        quizService.setQuiz(quiz,userId);
-        return quiz;
+    public QuizDTO setQuiz(@RequestBody QuizDTO quizDTO, @RequestParam int userId){
+        quizService.setQuiz(quizDTO,userId);
+        return quizDTO;
     }
 
     @GetMapping("/quiz/{id}")

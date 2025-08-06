@@ -1,6 +1,7 @@
 package com.quizWeb.demo.Service;
 
 
+import com.quizWeb.demo.DTO.QuizDTO;
 import com.quizWeb.demo.Model.Quiz;
 import com.quizWeb.demo.Model.User;
 import com.quizWeb.demo.Repository.QuizRepository;
@@ -24,11 +25,16 @@ public class QuizService {
         return QuizRepo.findAll();
     }
 
-    public void setQuiz(Quiz quiz, int userId) {
+    public void setQuiz(QuizDTO quizDTO, int userId) {
+
+        Quiz quiz = new Quiz();
 
         User user = userRepo.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         quiz.setUser(user);
+        quiz.setQuizName(quizDTO.getQuizName());
+        quiz.setDuration(quizDTO.getDuration());
+        quiz.setAccessKey(quizDTO.getAccessKey());
         QuizRepo.save(quiz);
     }
 
