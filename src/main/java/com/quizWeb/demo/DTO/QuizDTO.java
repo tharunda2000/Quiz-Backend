@@ -8,5 +8,6 @@ public class QuizDTO {
     private String quizName;
     private int duration;
     private String accessKey;
+    private String quizType;
     private int userId;
 }

@@ -22,6 +22,7 @@ public class Quiz {
     private String quizName;
     private int duration;
     private String accessKey;
+    private String quizType;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

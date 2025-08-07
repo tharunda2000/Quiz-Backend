@@ -33,6 +33,7 @@ public class QuizService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         quiz.setUser(user);
         quiz.setQuizName(quizDTO.getQuizName());
+        quiz.setQuizType(quizDTO.getQuizType());
         quiz.setDuration(quizDTO.getDuration());
         quiz.setAccessKey(quizDTO.getAccessKey());
         QuizRepo.save(quiz);
@@ -52,6 +53,7 @@ public class QuizService {
                 .orElseThrow(()->new RuntimeException("Quiz does not found"));
 
         currentQuiz.setQuizName(quizDTO.getQuizName());
+        currentQuiz.setQuizType(quizDTO.getQuizType());
         currentQuiz.setDuration(quizDTO.getDuration());
         currentQuiz.setAccessKey(quizDTO.getAccessKey());
 
